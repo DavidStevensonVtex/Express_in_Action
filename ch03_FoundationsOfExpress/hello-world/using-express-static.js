@@ -6,6 +6,7 @@ var http = require("http");
 
 var app = express();
 
+console.log("__dirname", __dirname);
 var publicPath = path.resolve(__dirname, "public");
 console.log(publicPath);
 app.use(express.static(publicPath));
