@@ -26,15 +26,19 @@ app.get("/", function(request, response) {
 }) ;
 
 // REnders the "new entry" page at views/new-entry.ejs when getting the url
-app.post("/new-entry", function(request, response) {
+app.get("/new-entry", function(request, response) {
+    console.log("/new-entry");
     response.render("new-entry");
 });
 
-app.post("/new-entry", function(request, resonse) {
+app.post("/new-entry", function(request, response) {
     if (! request.body.title || !request.body.body ) {
         response.status(400).send("Entries must have a title and a body.");
         return ;
     }
+
+    console.log("title: ", request.body.title);
+    console.log("content: ", request.body.body);
 
     entries.push ( {
         title: request.body.title,
@@ -42,7 +46,7 @@ app.post("/new-entry", function(request, resonse) {
         published: new Date()
     }) ;
 
-    response.redirecxt("/");
+    response.redirect("/");
 });
 
 app.use( function (request, response) {
