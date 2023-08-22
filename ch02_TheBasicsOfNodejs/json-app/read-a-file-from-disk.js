@@ -1,4 +1,4 @@
-// Listing 2.11 Reading a file from disk
+// Listing 2.12 Adding a console.log after the asynchronous operations
 
 var fs = require("fs");
 
@@ -11,4 +11,7 @@ fs.readFile("myfile.txt", options, function(err, data) {
     console.log(data.match(/x/gi).length + " letter X's");
 });
 
+console.log("Hello world!");
+
+// Hello world!
 // 288 letter X's
