@@ -1,4 +1,4 @@
-// Listing 3.10 Express routing example
+// Listing 3.11 Grabbing data from routes
 
 var express = require("express");
 var path = require("path");
@@ -12,7 +12,7 @@ console.log(publicPath);
 app.use(express.static(publicPath));
 
 app.get("/", function(request, response) {
-    response.end("WElcoe to my homepage!");
+    response.end("Welcome to my homepage!");
 });
 
 app.get("/about", function (request, response) {
@@ -22,6 +22,11 @@ app.get("/about", function (request, response) {
 app.get("/weather", function(request,response) {
     response.end("The current weather is NICE.");
 });
+
+app.get("/hello/:who", function(request, response) {
+    response.end("Hello, " + request.params.who + ".");
+    // Fun fact: this has some security issues, which we'll get to!
+})
 
 app.use(function(request,response) {
     response.statusCode = 404 ;
