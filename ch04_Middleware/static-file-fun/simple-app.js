@@ -1,4 +1,4 @@
-// Listing 4.13 Printing whether a file successfully sent
+// Listing 4.14 Entering error mode if a file fails to send
 
 let express = require("express") ;
 let path = require("path") ;
@@ -6,10 +6,10 @@ let path = require("path") ;
 let app = express();
 
 let filePath = path.join(__dirname, "really_cool.jpg");
-app.use(function(req, res) {
+app.use(function(req, res, next) {
     res.sendFile(filePath, function(err) {
         if (err) {
-            console.error("File failed to send.");
+            next(new Error("Error sending file!"));
         } else {
             console.log("File sent!");
         }
