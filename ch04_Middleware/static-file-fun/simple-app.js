@@ -1,4 +1,4 @@
-// Listing 4.15 Middleware that logs all errors
+// Listing 4.16 Responding to the error
 
 let express = require("express") ;
 let path = require("path") ;
@@ -16,10 +16,14 @@ app.use(function(req, res, next) {
     });
 });
 
-
 app.use(function(err, req, res, next) {
     console.error(err);
     next(err);
+});
+
+app.use(function(err, req, res, next) {
+    res.status(500);
+    res.send("Internal server error.");
 });
 
 app.listen(3000, function() {
