@@ -49,3 +49,27 @@ No catching here
 
 Express's error-handling middleware does not handle errors that are thrown with the
 _throw_ keyword, only when you call next with an argument.
+
+Express uses the number of arguments of a function to dettermine which middleware
+handles errors and which doesn't.
+
+### 4.4 Other useful middleware
+
+Although these modules aren't bundled with Express, the Express team maintains a number
+of middleware modules:
+
+* _body-parser for parsing request bodies_. https://github.com/expressjs/body-parser
+
+* _cookie-parser for parsing cookies from users_. It needs to be paired with another 
+Express supported middleware like express-session. https://github.com/expressjs/cookie-session
+
+* _Compression for compressing responses to save on bytes. See more at https://github.com/expressjs/compression
+
+You can find a full list on the Express homepage at https://expressjs.com/en/api.html#middleware-callback-function-examples
+
+* _Helmet_ Helps to secure your applications. https://github.com/helmetjs/helmet
+
+* _connect-assets_ -- Compiles and minifies your CSS and JavaScript assets. https://github.com/adunkman/connect-assets
+
+See Appendix A for more helpers
+
