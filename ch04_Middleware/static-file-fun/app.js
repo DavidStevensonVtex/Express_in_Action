@@ -1,32 +1,15 @@
-// Listing 4.8 app.js that now uses Morgan
+// Listing 4.11 The next version of your static file app (app.js)
 
 var express = require("express") ;
 var morgan = require("morgan");
 var path = require("path") ;
-var fs = require("fs");
 
 var app = express();
 
 app.use(morgan("short"));
 
-app.use(function ( req, res, next ) {
-    // Uses path.join to find the path where the file should be.
-    var filePath = path.join(__dirname, "static", req.url);
-    // console.log("__dirname", __dirname, "filePath", filePath, "req.url", req.url);
-    fs.stat(filePath, function(err, fileInfo) {
-        // If fs.stat fails, continue to the next middleware.
-        if (err) {
-            next();
-            return ;
-        }
-
-        if (fileInfo.isFile()) {
-            res.sendFile(filePath) ;
-        } else {
-            next();
-        }
-    });
-}) ;
+let staticPath = path.join(__dirname, "static");
+app.use(express.static(staticPath));
 
 app.use( function(req, res) {
     res.status(404) ;
