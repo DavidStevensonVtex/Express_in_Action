@@ -1,4 +1,4 @@
-// Listing 4.5 Adding static file middleware to the middleware stack
+// Listing 4.6 Your final middleware: the 404 handler
 
 var express = require("express") ;
 var path = require("path") ;
@@ -32,7 +32,10 @@ app.use(function ( req, res, next ) {
     });
 }) ;
 
-
+app.use( function(req, res) {
+    res.status(404) ;
+    res.send("File not found!");
+})
 
 app.listen(3000, function() {
     console.log("App started on port 3000: http://localhost:3000/")
