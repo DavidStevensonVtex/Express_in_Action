@@ -1,11 +1,11 @@
-// Listing 4.14 Entering error mode if a file fails to send
+// Listing 4.15 Middleware that logs all errors
 
 let express = require("express") ;
 let path = require("path") ;
 
 let app = express();
 
-let filePath = path.join(__dirname, "really_cool.jpg");
+let filePath = path.join(__dirname, "file_not_found.jpg");
 app.use(function(req, res, next) {
     res.sendFile(filePath, function(err) {
         if (err) {
@@ -14,6 +14,12 @@ app.use(function(req, res, next) {
             console.log("File sent!");
         }
     });
+});
+
+
+app.use(function(err, req, res, next) {
+    console.error(err);
+    next(err);
 });
 
 app.listen(3000, function() {
