@@ -1,4 +1,4 @@
-// Listing 4.6 Your final middleware: the 404 handler
+// Listing 4.7 The first version of the static file app (app.js)
 
 var express = require("express") ;
 var path = require("path") ;
