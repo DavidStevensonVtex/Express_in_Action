@@ -1,4 +1,4 @@
-// Listing 5-2. The simplest parameter
+// Listing 5-3. Using regular expressions for numeric routes
 
 let express = require("express");
 let app = express();
@@ -7,11 +7,9 @@ app.get("/olivia", function(request, response) {
     response.send("Welcome to Olivia's homepage!");
 });
 
-app.get("/users/:userid", function(req, res) {
-    let userId = parseInt(req.params.userid, 10);
-    res.send( Number.isNaN(userId) ? 
-        "Invalid user: user id must be a number." :
-        "Welcome user: " + userId);
+app.get(/^\/users\/(\d+)$/, function(req, res) {
+    let userId = parseInt(req.params[0], 10);
+    res.send("Welcome user: " + userId);
 }) ;
 
 app.use( function(request, response) {
