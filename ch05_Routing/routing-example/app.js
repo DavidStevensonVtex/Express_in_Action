@@ -1,10 +1,15 @@
-// Listing 5-4 Using regular expressions for complex routes
+// Listing 5-6 Handling a search query string
 
 let express = require("express");
 let app = express();
 
 app.get("/olivia", function(request, response) {
     response.send("Welcome to Olivia's homepage!");
+});
+
+app.get("/search", function(req, res) {
+    // http://localhost:3000/search?q=javascript-themed%20burrito
+    res.send("Searching for query: " + req.query.q);
 });
 
 app.get(/^\/users\/(\d+)-(\d+)$/, function ( req, res ) {
