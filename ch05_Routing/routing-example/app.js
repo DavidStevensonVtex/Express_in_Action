@@ -1,10 +1,16 @@
-// Listing 5-3. Using regular expressions for numeric routes
+// Listing 5-4 Using regular expressions for complex routes
 
 let express = require("express");
 let app = express();
 
 app.get("/olivia", function(request, response) {
     response.send("Welcome to Olivia's homepage!");
+});
+
+app.get(/^\/users\/(\d+)-(\d+)$/, function ( req, res ) {
+    let startId = parseInt(req.params[0], 10);
+    let endId   = parseInt(req.params[1], 10);
+    res.send(`Displaying information for users: ${startId} through ${endId}`);
 });
 
 app.get(/^\/users\/(\d+)$/, function(req, res) {
