@@ -1,4 +1,4 @@
-// Listing 5-9 A simple example of express.static
+// Listing 5-10 Mounting static file middleware
 
 let express = require("express");
 let path = require("path");
@@ -6,7 +6,7 @@ let http = require("http");
 let app = express();
 
 let publicPath = path.resolve(__dirname, "public");
-app.use(express.static(publicPath));
+app.use("/wwwroot", express.static(publicPath));
 
 app.use(function(request, response) {
     response.writeHead(200, { "Content-Type": "text/plain" });
