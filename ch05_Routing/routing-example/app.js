@@ -9,7 +9,16 @@ app.get("/olivia", function(request, response) {
 
 app.get("/search", function(req, res) {
     // http://localhost:3000/search?q=javascript-themed%20burrito
-    res.send("Searching for query: " + req.query.q);
+    // http://localhost:3000/search?q=something&q=somethingelse
+    console.log(req.query.q);
+    console.log(typeof req.query.q);
+    if (typeof req.query.q === "string") {
+        res.send("Searching for query: " + req.query.q);
+    } else if ( Array.isArray(req.query.q)) {
+        let output = req.query.q.join(", ");
+        res.send("Searching for query: " + output);
+    }
+
 });
 
 app.get(/^\/users\/(\d+)-(\d+)$/, function ( req, res ) {
