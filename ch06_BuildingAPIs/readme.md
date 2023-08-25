@@ -154,3 +154,9 @@ res.status(404).json( { error: "Resource nto found!" });
 res.status(404);
 res.json( { error: "Resource not found!" } ) ;
 ```
+
+Listing 6.11 Setting the status code the raw way
+
+```
+res.statusCode = 404 ;
+```
