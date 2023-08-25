@@ -76,8 +76,6 @@ curl -w "\n" -X DELETE http://localhost:3000
 Listing 6.5 Version 1 of your API, in app1.js
 
 ```
-// Listing 6.5 Version 1 of your API, in app1.js
-
 let express = require("express");
 
 // Creates a new router, a mini-application
@@ -95,4 +93,48 @@ api.get("/all_timezones", function(req, res) {
 });
 
 module.exports = api ;      // Exports the router so that other files can use it
+```
+
+Listing 6.7 Version 2 of your API, in api2.js
+
+```
+let express = require("express");
+
+let api = express.Router() ;
+
+api.get("/timezone", function ( req, res) {
+    res.send("API 2: super cooll new response for /timezone");
+});
+
+module.exports = api ;      // Exports the router so that other files can use it
+```
+
+Listing 6.8 The main app code in app.js
+
+```
+let express = require("express");
+
+let apiVersion1 = require("./api1.js");
+let apiVersion2 = require("./api2.js");
+
+let app = express();
+
+app.use("/v1", apiVersion1);
+app.use("/v2", apiVersion2);
+
+app.listen(3000, function() {
+    console.log("App started on port 3000: http://localhost:3000/")
+});
+```
+
+Testing Version 1 and 2 Routing
+
+```
+curl -w "\n" -X GET    http://localhost:3000/v1/timezone
+curl -w "\n" -X GET    http://localhost:3000/v1/all_timezones
+curl -w "\n" -X GET    http://localhost:3000/v2/timezone
+
+# Sample response for /timezone
+# Sample response for /all_timezones
+# API 2: super cool new response for /timezones
 ```
