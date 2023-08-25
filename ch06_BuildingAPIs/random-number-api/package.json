@@ -1,5 +1,5 @@
 {
-    "name": "basic-web-api",
+    "name": "random-number-api",
     "private": true,
     "scripts": {
         "start": "nodemon app.js"
