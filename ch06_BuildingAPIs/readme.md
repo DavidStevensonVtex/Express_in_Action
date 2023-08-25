@@ -144,3 +144,13 @@ Listing 6.9 Setting the HTTP status code in Express
 ```
 res.status(404)
 ```
+
+Listing 6.10 Setting the HTTP status code and sending some JSON
+
+```
+res.status(404).json( { error: "Resource nto found!" });
+
+// This is equivalent to:
+res.status(404);
+res.json( { error: "Resource not found!" } ) ;
+```
