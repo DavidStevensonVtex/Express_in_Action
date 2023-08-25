@@ -1,24 +1,25 @@
-// Listing 6.2 Your random number app
+// Listing 6.4 Handling different HTTP verbs
 
 let express = require("express");
 
 let app = express() ;
 
-app.get("/random/:min/:max", function(req, res) {
-    let min = parseInt(req.params.min) ;
-    let max = parseInt(req.params.max) ;
+app.get("/", function(req, res) {
+    res.send("You just sent a GET request, friend");
+});
 
-    if (isNaN(min) || isNaN(max)) {
-        res.status(400) ;
-        res.json( { error: "Bad request."} ) ;
-        return ;
-    }
+app.post("/", function(req, res) {
+    res.send("a POST request? nice");
+});
 
-    let result = Math.round( (Math.random() * (max - min)) + min) ;
+app.put("/", function(req, res) {
+    res.send("I don't see a lot of PUT requests anymore");
+});
 
-    res.json( { result: result } ) ;
-}) ;
+app.delete("/", function(req, res) {
+    res.send("Oh my, a DELETE??");
+});
 
 app.listen(3000, function() {
-    console.log("App started on port 3000: http://localhost:3000/random/1/6")
-})
+    console.log("App started on port 3000: http://localhost:3000/")
+});
