@@ -1,24 +1,12 @@
-// Listing 6.4 Handling different HTTP verbs
+// Listing 6.6 The main app code in app.js
 
 let express = require("express");
 
-let app = express() ;
+let apiVersion1 = require("./api1.js");
 
-app.get("/", function(req, res) {
-    res.send("You just sent a GET request, friend");
-});
+let app = express();
 
-app.post("/", function(req, res) {
-    res.send("a POST request? nice");
-});
-
-app.put("/", function(req, res) {
-    res.send("I don't see a lot of PUT requests anymore");
-});
-
-app.delete("/", function(req, res) {
-    res.send("Oh my, a DELETE??");
-});
+app.use("/v1", apiVersion1);
 
 app.listen(3000, function() {
     console.log("App started on port 3000: http://localhost:3000/")

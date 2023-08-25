@@ -1,4 +1,4 @@
-// Listing 6.5 Version 1 of your API, in app1.js
+// Listing 6.5 Version 1 of your API, in api1.js
 
 let express = require("express");
 
