@@ -138,3 +138,9 @@ curl -w "\n" -X GET    http://localhost:3000/v2/timezone
 # Sample response for /all_timezones
 # API 2: super cool new response for /timezones
 ```
+
+Listing 6.9 Setting the HTTP status code in Express
+
+```
+res.status(404)
+```
