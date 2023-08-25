@@ -62,3 +62,37 @@ Invoke-RestMethod -Method POST   -Uri "http://localhost:3000"
 Invoke-RestMethod -Method PUT    -Uri "http://localhost:3000" 
 Invoke-RestMethod -Method DELETE -Uri "http://localhost:3000" 
 ```
+
+Testing the Web API with curl
+
+```
+curl -w "\n" -X GET    http://localhost:3000
+curl -w "\n" -X POST   http://localhost:3000
+curl -w "\n" -X PUT    http://localhost:3000
+curl -w "\n" -X DELETE http://localhost:3000
+```
+## 6.4 API Versioning
+
+Listing 6.5 Version 1 of your API, in app1.js
+
+```
+// Listing 6.5 Version 1 of your API, in app1.js
+
+let express = require("express");
+
+// Creates a new router, a mini-application
+
+let api = express.Router() ;
+
+// Example routes
+
+api.get("/timezone", function ( req, res) {
+    res.send("Sample response for /timezone");
+});
+
+api.get("/all_timezones", function(req, res) {
+    res.send("Sample response for /all_timezones");
+});
+
+module.exports = api ;      // Exports the router so that other files can use it
+```
