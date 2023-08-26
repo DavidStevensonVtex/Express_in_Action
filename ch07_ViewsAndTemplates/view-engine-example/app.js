@@ -9,6 +9,7 @@ let app = express();
 app.locals.appName = "Song Lyrics" ;
 
 app.set("view engine", "ejs");
+// app.set("view engine", "jade");
 app.set("views", path.resolve(__dirname, "views"));
 app.engine("html", ejs.renderFile);
 
