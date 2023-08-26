@@ -37,7 +37,7 @@ app.get("/tonyhawk", function(req, res) {
         name: "Tony Hawk",
         birthyear: 1968,
         career: "skateboarding",
-        bio: "<b>Tony Hawk</b> is the coolest skaeboarder around."
+        bio: "<b>Tony Hawk</b> is the coolest skateboarder around."
     }) ;
 }) ;
 
