@@ -32,6 +32,15 @@ app.get("/", function(req, res) {
     res.render("index") ;
 }) ;
 
+app.get("/tonyhawk", function(req, res) {
+    res.render("tonyhawk", {
+        name: "Tony Hawk",
+        birthyear: 1968,
+        career: "skateboarding",
+        bio: "<b>Tony Hawk</b> is the coolest skaeboarder around."
+    }) ;
+}) ;
+
 app.use(function(req, res) {
     res.status(404);
     res.render("404.ejs", { 

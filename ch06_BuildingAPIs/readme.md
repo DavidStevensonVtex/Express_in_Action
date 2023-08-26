@@ -200,3 +200,26 @@ views/index.ejs
     </body>
 </html>
 ```
+
+#### 7.1.2 A complicated view rendering
+
+#### Making all view engines compatible with Express: Consolidate.js
+
+Consolidate.js https://github.com/tj/consolidate.js
+
+View Engines: EJS, Pug, Mustache, Handlebars, and Hogan
+
+Walrus is another JavaScript view engine that's not compatible with Express out of the box.
+
+### 7.2 Everything you need to know about EJS
+
+EJS - Embeeded JavaScript
+
+Two versions of EJS
+
+* EJS - Embedded Javascript Templating, a templating engine used by Node.js
+* Good one. TJ Holowaychuck, the creator of Express.
+* Wrong one. http://embeddedjs.com/ Last updated in 2009, doesn't work in Node.
+
+#### 7.2.1 The syntax of EJS
+
