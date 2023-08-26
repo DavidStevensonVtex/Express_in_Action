@@ -160,3 +160,6 @@ Listing 6.11 Setting the status code the raw way
 ```
 res.statusCode = 404 ;
 ```
+
+## Chapter 7: Views and templates: Pug and EJS
+
